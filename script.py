@@ -35,16 +35,19 @@ def execute_command(command, delay=1):
 	return remote_conn.recv(65535)
 
 if __name__ == "__main__":
+	# Check if SSH server is provided as first argument, else use the constant address
 	if 'sys.argv[1]' in globals() and sys.argv[1] != "":
 		ip = sys.argv[1]
 	else:
 		ip = SSH_DEST
 
+	# Check if login user is provided as second argument, else use the constant user
 	if 'sys.argv[2]' in globals() and sys.argv[2] != "":
 		user = sys.argv[2]
 	else:
 		user = SSH_USER
 
+	# Check if login password is provided as third argument, else use the constant password
 	if 'sys.argv[3]' in globals() and sys.argv[3] != "":
 		password = sys.argv[3]
 	else:
@@ -75,10 +78,11 @@ if __name__ == "__main__":
 	# disable paging
 	disable_paging()
 
-	#displaying standard commands
+	# displaying standard commands
 	display_standard_commands()
 
 	loop = 1
+	# keep displaying the shell prompt until exitted
 	while loop == 1:
 		# Ask user for command to run
 		#prompt = "Run command: "
